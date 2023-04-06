@@ -115,7 +115,14 @@
 	reg [C_S_AXI_DATA_WIDTH-1:0]	 reg_data_out;
 	integer	 byte_index;
 	reg	 aw_en;
-
+    
+    wire [32:0] out0;
+    wire [32:0] out1;
+    wire [32:0] out2;
+    wire [32:0] out3;
+    wire [32:0] out4;
+    wire [32:0] out5;
+    
 	// I/O Connections assignments
 
 	assign S_AXI_AWREADY	= axi_awready;
@@ -390,12 +397,12 @@
 	begin
 	      // Address decoding for reading registers
 	      case ( axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] )
-	        3'h0   : reg_data_out <= slv_reg0;
-	        3'h1   : reg_data_out <= slv_reg1;
-	        3'h2   : reg_data_out <= slv_reg2;
-	        3'h3   : reg_data_out <= slv_reg3;
-	        3'h4   : reg_data_out <= slv_reg4;
-	        3'h5   : reg_data_out <= slv_reg5;
+	        3'h0   : reg_data_out <= out0;
+	        3'h1   : reg_data_out <= out1;
+	        3'h2   : reg_data_out <= out2;
+	        3'h3   : reg_data_out <= out3;
+	        3'h4   : reg_data_out <= out4;
+	        3'h5   : reg_data_out <= out5;
 	        default : reg_data_out <= 0;
 	      endcase
 	end
@@ -448,185 +455,185 @@
         //(* dont_touch *) or U6(q3, q1, q2);
         
         // RO 10
-        (* dont_touch = "true" *) FD AA1(.D(q3[0]), .C(S_AXI_ACLK), .Q(slv_reg0[1]));
-        (* dont_touch = "true" *) FD AA2(.D(q3[1]), .C(S_AXI_ACLK), .Q(slv_reg0[2]));
-        (* dont_touch = "true" *) FD AA3(.D(q3[2]), .C(S_AXI_ACLK), .Q(slv_reg0[3]));
-        (* dont_touch = "true" *) FD AA4(.D(q3[3]), .C(S_AXI_ACLK), .Q(slv_reg0[4]));
-        (* dont_touch = "true" *) FD AA5(.D(q3[4]), .C(S_AXI_ACLK), .Q(slv_reg0[5]));
-        (* dont_touch = "true" *) FD AA6(.D(q3[5]), .C(S_AXI_ACLK), .Q(slv_reg0[6]));
-        (* dont_touch = "true" *) FD AA7(.D(q3[6]), .C(S_AXI_ACLK), .Q(slv_reg0[7]));
-        (* dont_touch = "true" *) FD AA8(.D(q3[7]), .C(S_AXI_ACLK), .Q(slv_reg0[8]));
-        (* dont_touch = "true" *) FD AA9(.D(q3[8]), .C(S_AXI_ACLK), .Q(slv_reg0[9]));
-        (* dont_touch = "true" *) FD AA10(.D(q3[9]), .C(S_AXI_ACLK), .Q(slv_reg0[10]));
-        (* dont_touch = "true" *) FD AA11(.D(q3[10]), .C(S_AXI_ACLK), .Q(slv_reg0[11]));
-        (* dont_touch = "true" *) FD AA12(.D(q3[11]), .C(S_AXI_ACLK), .Q(slv_reg0[12]));
-        (* dont_touch = "true" *) FD AA13(.D(q3[12]), .C(S_AXI_ACLK), .Q(slv_reg0[13]));
-        (* dont_touch = "true" *) FD AA14(.D(q3[13]), .C(S_AXI_ACLK), .Q(slv_reg0[14]));
-        (* dont_touch = "true" *) FD AA15(.D(q3[14]), .C(S_AXI_ACLK), .Q(slv_reg0[15]));
-        (* dont_touch = "true" *) FD AA16(.D(q3[15]), .C(S_AXI_ACLK), .Q(slv_reg0[16]));
-        
+        (* dont_touch = "true" *) FD AA1(.D(q3[0]), .C(S_AXI_ACLK), .Q(out0[1]));
+        (* dont_touch = "true" *) FD AA2(.D(q3[1]), .C(S_AXI_ACLK), .Q(out0[2]));
+        (* dont_touch = "true" *) FD AA3(.D(q3[2]), .C(S_AXI_ACLK), .Q(out0[3]));
+        (* dont_touch = "true" *) FD AA4(.D(q3[3]), .C(S_AXI_ACLK), .Q(out0[4]));
+        (* dont_touch = "true" *) FD AA5(.D(q3[4]), .C(S_AXI_ACLK), .Q(out0[5]));
+        (* dont_touch = "true" *) FD AA6(.D(q3[5]), .C(S_AXI_ACLK), .Q(out0[6]));
+        (* dont_touch = "true" *) FD AA7(.D(q3[6]), .C(S_AXI_ACLK), .Q(out0[7]));
+        (* dont_touch = "true" *) FD AA8(.D(q3[7]), .C(S_AXI_ACLK), .Q(out0[8]));
+        (* dont_touch = "true" *) FD AA9(.D(q3[8]), .C(S_AXI_ACLK), .Q(out0[9]));
+        (* dont_touch = "true" *) FD AA10(.D(q3[9]), .C(S_AXI_ACLK), .Q(out0[10]));
+        (* dont_touch = "true" *) FD AA11(.D(q3[10]), .C(S_AXI_ACLK), .Q(out0[11]));
+        (* dont_touch = "true" *) FD AA12(.D(q3[11]), .C(S_AXI_ACLK), .Q(out0[12]));
+        (* dont_touch = "true" *) FD AA13(.D(q3[12]), .C(S_AXI_ACLK), .Q(out0[13]));
+        (* dont_touch = "true" *) FD AA14(.D(q3[13]), .C(S_AXI_ACLK), .Q(out0[14]));
+        (* dont_touch = "true" *) FD AA15(.D(q3[14]), .C(S_AXI_ACLK), .Q(out0[15]));
+        (* dont_touch = "true" *) FD AA16(.D(q3[15]), .C(S_AXI_ACLK), .Q(out0[16]));
+              
         // RO 9
-        (* dont_touch = "true" *) FD AB1(.D(slv_reg0[1]), .C(S_AXI_ACLK), .Q(slv_reg0[17]));
-        (* dont_touch = "true" *) FD AB2(.D(slv_reg0[2]), .C(S_AXI_ACLK), .Q(slv_reg0[18]));
-        (* dont_touch = "true" *) FD AB3(.D(slv_reg0[3]), .C(S_AXI_ACLK), .Q(slv_reg0[19]));
-        (* dont_touch = "true" *) FD AB4(.D(slv_reg0[4]), .C(S_AXI_ACLK), .Q(slv_reg0[20]));
-        (* dont_touch = "true" *) FD AB5(.D(slv_reg0[5]), .C(S_AXI_ACLK), .Q(slv_reg0[21]));
-        (* dont_touch = "true" *) FD AB6(.D(slv_reg0[6]), .C(S_AXI_ACLK), .Q(slv_reg0[22]));
-        (* dont_touch = "true" *) FD AB7(.D(slv_reg0[7]), .C(S_AXI_ACLK), .Q(slv_reg0[23]));
-        (* dont_touch = "true" *) FD AB8(.D(slv_reg0[8]), .C(S_AXI_ACLK), .Q(slv_reg0[24]));
-        (* dont_touch = "true" *) FD AB9(.D(slv_reg0[9]), .C(S_AXI_ACLK), .Q(slv_reg0[25]));
-        (* dont_touch = "true" *) FD AB10(.D(slv_reg0[10]), .C(S_AXI_ACLK), .Q(slv_reg0[26]));
-        (* dont_touch = "true" *) FD AB11(.D(slv_reg0[11]), .C(S_AXI_ACLK), .Q(slv_reg0[27]));
-        (* dont_touch = "true" *) FD AB12(.D(slv_reg0[12]), .C(S_AXI_ACLK), .Q(slv_reg0[28]));
-        (* dont_touch = "true" *) FD AB13(.D(slv_reg0[13]), .C(S_AXI_ACLK), .Q(slv_reg0[29]));
-        (* dont_touch = "true" *) FD AB14(.D(slv_reg0[14]), .C(S_AXI_ACLK), .Q(slv_reg0[30]));
-        (* dont_touch = "true" *) FD AB15(.D(slv_reg0[15]), .C(S_AXI_ACLK), .Q(slv_reg0[31]));
-        (* dont_touch = "true" *) FD AB16(.D(slv_reg0[16]), .C(S_AXI_ACLK), .Q(slv_reg1[0]));
-        
-        // RO 8
-        (* dont_touch = "true" *) FD AC1(.D(slv_reg0[17]), .C(S_AXI_ACLK), .Q(slv_reg1[1]));
-        (* dont_touch = "true" *) FD AC2(.D(slv_reg0[18]), .C(S_AXI_ACLK), .Q(slv_reg1[2]));
-        (* dont_touch = "true" *) FD AC3(.D(slv_reg0[19]), .C(S_AXI_ACLK), .Q(slv_reg1[3]));
-        (* dont_touch = "true" *) FD AC4(.D(slv_reg0[20]), .C(S_AXI_ACLK), .Q(slv_reg1[4]));
-        (* dont_touch = "true" *) FD AC5(.D(slv_reg0[21]), .C(S_AXI_ACLK), .Q(slv_reg1[5]));
-        (* dont_touch = "true" *) FD AC6(.D(slv_reg0[22]), .C(S_AXI_ACLK), .Q(slv_reg1[6]));
-        (* dont_touch = "true" *) FD AC7(.D(slv_reg0[23]), .C(S_AXI_ACLK), .Q(slv_reg1[7]));
-        (* dont_touch = "true" *) FD AC8(.D(slv_reg0[24]), .C(S_AXI_ACLK), .Q(slv_reg1[8]));
-        (* dont_touch = "true" *) FD AC9(.D(slv_reg0[25]), .C(S_AXI_ACLK), .Q(slv_reg1[9]));
-        (* dont_touch = "true" *) FD AC10(.D(slv_reg0[26]), .C(S_AXI_ACLK), .Q(slv_reg1[10]));
-        (* dont_touch = "true" *) FD AC11(.D(slv_reg0[27]), .C(S_AXI_ACLK), .Q(slv_reg1[11]));
-        (* dont_touch = "true" *) FD AC12(.D(slv_reg0[28]), .C(S_AXI_ACLK), .Q(slv_reg1[12]));
-        (* dont_touch = "true" *) FD AC13(.D(slv_reg0[29]), .C(S_AXI_ACLK), .Q(slv_reg1[13]));
-        (* dont_touch = "true" *) FD AC14(.D(slv_reg0[30]), .C(S_AXI_ACLK), .Q(slv_reg1[14]));
-        (* dont_touch = "true" *) FD AC15(.D(slv_reg0[31]), .C(S_AXI_ACLK), .Q(slv_reg1[15]));
-        (* dont_touch = "true" *) FD AC16(.D(slv_reg1[0]), .C(S_AXI_ACLK), .Q(slv_reg1[16]));
-        
-         // RO 7
-        (* dont_touch = "true" *) FD AD1(.D(slv_reg1[1]), .C(S_AXI_ACLK), .Q(slv_reg1[17]));
-        (* dont_touch = "true" *) FD AD2(.D(slv_reg1[2]), .C(S_AXI_ACLK), .Q(slv_reg1[18]));
-        (* dont_touch = "true" *) FD AD3(.D(slv_reg1[3]), .C(S_AXI_ACLK), .Q(slv_reg1[19]));
-        (* dont_touch = "true" *) FD AD4(.D(slv_reg1[4]), .C(S_AXI_ACLK), .Q(slv_reg1[20]));
-        (* dont_touch = "true" *) FD AD5(.D(slv_reg1[5]), .C(S_AXI_ACLK), .Q(slv_reg1[21]));
-        (* dont_touch = "true" *) FD AD6(.D(slv_reg1[6]), .C(S_AXI_ACLK), .Q(slv_reg1[22]));
-        (* dont_touch = "true" *) FD AD7(.D(slv_reg1[7]), .C(S_AXI_ACLK), .Q(slv_reg1[23]));
-        (* dont_touch = "true" *) FD AD8(.D(slv_reg1[8]), .C(S_AXI_ACLK), .Q(slv_reg1[24]));
-        (* dont_touch = "true" *) FD AD9(.D(slv_reg1[9]), .C(S_AXI_ACLK), .Q(slv_reg1[25]));
-        (* dont_touch = "true" *) FD AD10(.D(slv_reg1[10]), .C(S_AXI_ACLK), .Q(slv_reg1[26]));
-        (* dont_touch = "true" *) FD AD11(.D(slv_reg1[11]), .C(S_AXI_ACLK), .Q(slv_reg1[27]));
-        (* dont_touch = "true" *) FD AD12(.D(slv_reg1[12]), .C(S_AXI_ACLK), .Q(slv_reg1[28]));
-        (* dont_touch = "true" *) FD AD13(.D(slv_reg1[13]), .C(S_AXI_ACLK), .Q(slv_reg1[29]));
-        (* dont_touch = "true" *) FD AD14(.D(slv_reg1[14]), .C(S_AXI_ACLK), .Q(slv_reg1[30]));
-        (* dont_touch = "true" *) FD AD15(.D(slv_reg1[15]), .C(S_AXI_ACLK), .Q(slv_reg1[32]));
-        (* dont_touch = "true" *) FD AD16(.D(slv_reg1[16]), .C(S_AXI_ACLK), .Q(slv_reg2[0]));
-        
-       // RO 6
-       (* dont_touch = "true" *) FD AE1(.D(slv_reg1[17]), .C(S_AXI_ACLK), .Q(slv_reg2[1]));
-       (* dont_touch = "true" *) FD AE2(.D(slv_reg1[18]), .C(S_AXI_ACLK), .Q(slv_reg2[2]));
-       (* dont_touch = "true" *) FD AE3(.D(slv_reg1[19]), .C(S_AXI_ACLK), .Q(slv_reg2[3]));
-       (* dont_touch = "true" *) FD AE4(.D(slv_reg1[20]), .C(S_AXI_ACLK), .Q(slv_reg2[4]));
-       (* dont_touch = "true" *) FD AE5(.D(slv_reg1[21]), .C(S_AXI_ACLK), .Q(slv_reg2[5]));
-       (* dont_touch = "true" *) FD AE6(.D(slv_reg1[22]), .C(S_AXI_ACLK), .Q(slv_reg2[6]));
-       (* dont_touch = "true" *) FD AE7(.D(slv_reg1[23]), .C(S_AXI_ACLK), .Q(slv_reg2[7]));
-       (* dont_touch = "true" *) FD AE8(.D(slv_reg1[24]), .C(S_AXI_ACLK), .Q(slv_reg2[8]));
-       (* dont_touch = "true" *) FD AE9(.D(slv_reg1[25]), .C(S_AXI_ACLK), .Q(slv_reg2[9]));
-       (* dont_touch = "true" *) FD AE10(.D(slv_reg1[26]), .C(S_AXI_ACLK), .Q(slv_reg2[10]));
-       (* dont_touch = "true" *) FD AE11(.D(slv_reg1[27]), .C(S_AXI_ACLK), .Q(slv_reg2[11]));
-       (* dont_touch = "true" *) FD AE12(.D(slv_reg1[28]), .C(S_AXI_ACLK), .Q(slv_reg2[12]));
-       (* dont_touch = "true" *) FD AE13(.D(slv_reg1[29]), .C(S_AXI_ACLK), .Q(slv_reg2[13]));
-       (* dont_touch = "true" *) FD AE14(.D(slv_reg1[30]), .C(S_AXI_ACLK), .Q(slv_reg2[14]));
-       (* dont_touch = "true" *) FD AE15(.D(slv_reg1[31]), .C(S_AXI_ACLK), .Q(slv_reg2[15]));
-       (* dont_touch = "true" *) FD AE16(.D(slv_reg2[0]), .C(S_AXI_ACLK), .Q(slv_reg2[16]));
-       
-       // RO 5
-      (* dont_touch = "true" *) FD AF1(.D(slv_reg2[1]), .C(S_AXI_ACLK), .Q(slv_reg2[17]));
-      (* dont_touch = "true" *) FD AF2(.D(slv_reg2[2]), .C(S_AXI_ACLK), .Q(slv_reg2[18]));
-      (* dont_touch = "true" *) FD AF3(.D(slv_reg2[3]), .C(S_AXI_ACLK), .Q(slv_reg2[19]));
-      (* dont_touch = "true" *) FD AF4(.D(slv_reg2[4]), .C(S_AXI_ACLK), .Q(slv_reg2[20]));
-      (* dont_touch = "true" *) FD AF5(.D(slv_reg2[5]), .C(S_AXI_ACLK), .Q(slv_reg2[21]));
-      (* dont_touch = "true" *) FD AF6(.D(slv_reg2[6]), .C(S_AXI_ACLK), .Q(slv_reg2[22]));
-      (* dont_touch = "true" *) FD AF7(.D(slv_reg2[7]), .C(S_AXI_ACLK), .Q(slv_reg2[23]));
-      (* dont_touch = "true" *) FD AF8(.D(slv_reg2[8]), .C(S_AXI_ACLK), .Q(slv_reg2[24]));
-      (* dont_touch = "true" *) FD AF9(.D(slv_reg2[9]), .C(S_AXI_ACLK), .Q(slv_reg2[25]));
-      (* dont_touch = "true" *) FD AF10(.D(slv_reg2[10]), .C(S_AXI_ACLK), .Q(slv_reg2[26]));
-      (* dont_touch = "true" *) FD AF11(.D(slv_reg2[11]), .C(S_AXI_ACLK), .Q(slv_reg2[27]));
-      (* dont_touch = "true" *) FD AF12(.D(slv_reg2[12]), .C(S_AXI_ACLK), .Q(slv_reg2[28]));
-      (* dont_touch = "true" *) FD AF13(.D(slv_reg2[13]), .C(S_AXI_ACLK), .Q(slv_reg2[29]));
-      (* dont_touch = "true" *) FD AF14(.D(slv_reg2[14]), .C(S_AXI_ACLK), .Q(slv_reg2[30]));
-      (* dont_touch = "true" *) FD AF15(.D(slv_reg2[15]), .C(S_AXI_ACLK), .Q(slv_reg2[31]));
-      (* dont_touch = "true" *) FD AF16(.D(slv_reg2[16]), .C(S_AXI_ACLK), .Q(slv_reg3[0]));
-      
-     // RO 4
-     (* dont_touch = "true" *) FD AG1(.D(slv_reg2[1]), .C(S_AXI_ACLK), .Q(slv_reg3[1]));
-     (* dont_touch = "true" *) FD AG2(.D(slv_reg2[18]), .C(S_AXI_ACLK), .Q(slv_reg3[2]));
-     (* dont_touch = "true" *) FD AG3(.D(slv_reg2[19]), .C(S_AXI_ACLK), .Q(slv_reg3[3]));
-     (* dont_touch = "true" *) FD AG4(.D(slv_reg2[20]), .C(S_AXI_ACLK), .Q(slv_reg3[4]));
-     (* dont_touch = "true" *) FD AG5(.D(slv_reg2[21]), .C(S_AXI_ACLK), .Q(slv_reg3[5]));
-     (* dont_touch = "true" *) FD AG6(.D(slv_reg2[22]), .C(S_AXI_ACLK), .Q(slv_reg3[6]));
-     (* dont_touch = "true" *) FD AG7(.D(slv_reg2[23]), .C(S_AXI_ACLK), .Q(slv_reg3[7]));
-     (* dont_touch = "true" *) FD AG8(.D(slv_reg2[24]), .C(S_AXI_ACLK), .Q(slv_reg3[8]));
-     (* dont_touch = "true" *) FD AG9(.D(slv_reg2[25]), .C(S_AXI_ACLK), .Q(slv_reg3[9]));
-     (* dont_touch = "true" *) FD AG10(.D(slv_reg2[26]), .C(S_AXI_ACLK), .Q(slv_reg3[10]));
-     (* dont_touch = "true" *) FD AG11(.D(slv_reg2[27]), .C(S_AXI_ACLK), .Q(slv_reg3[11]));
-     (* dont_touch = "true" *) FD AG12(.D(slv_reg2[28]), .C(S_AXI_ACLK), .Q(slv_reg3[12]));
-     (* dont_touch = "true" *) FD AG13(.D(slv_reg2[29]), .C(S_AXI_ACLK), .Q(slv_reg3[13]));
-     (* dont_touch = "true" *) FD AG14(.D(slv_reg2[30]), .C(S_AXI_ACLK), .Q(slv_reg3[14]));
-     (* dont_touch = "true" *) FD AG15(.D(slv_reg2[31]), .C(S_AXI_ACLK), .Q(slv_reg3[15]));
-     (* dont_touch = "true" *) FD AG16(.D(slv_reg3[0]), .C(S_AXI_ACLK), .Q(slv_reg3[16]));
-     
-    // RO 3
-    (* dont_touch = "true" *) FD AH1(.D(slv_reg3[1]), .C(S_AXI_ACLK), .Q(slv_reg3[17]));
-    (* dont_touch = "true" *) FD AH2(.D(slv_reg3[2]), .C(S_AXI_ACLK), .Q(slv_reg3[18]));
-    (* dont_touch = "true" *) FD AH3(.D(slv_reg3[3]), .C(S_AXI_ACLK), .Q(slv_reg3[19]));
-    (* dont_touch = "true" *) FD AH4(.D(slv_reg3[4]), .C(S_AXI_ACLK), .Q(slv_reg3[20]));
-    (* dont_touch = "true" *) FD AH5(.D(slv_reg3[5]), .C(S_AXI_ACLK), .Q(slv_reg3[21]));
-    (* dont_touch = "true" *) FD AH6(.D(slv_reg3[6]), .C(S_AXI_ACLK), .Q(slv_reg3[22]));
-    (* dont_touch = "true" *) FD AH7(.D(slv_reg3[7]), .C(S_AXI_ACLK), .Q(slv_reg3[23]));
-    (* dont_touch = "true" *) FD AH8(.D(slv_reg3[8]), .C(S_AXI_ACLK), .Q(slv_reg3[24]));
-    (* dont_touch = "true" *) FD AH9(.D(slv_reg3[9]), .C(S_AXI_ACLK), .Q(slv_reg3[25]));
-    (* dont_touch = "true" *) FD AH10(.D(slv_reg3[10]), .C(S_AXI_ACLK), .Q(slv_reg3[26]));
-    (* dont_touch = "true" *) FD AH11(.D(slv_reg3[11]), .C(S_AXI_ACLK), .Q(slv_reg3[27]));
-    (* dont_touch = "true" *) FD AH12(.D(slv_reg3[12]), .C(S_AXI_ACLK), .Q(slv_reg3[28]));
-    (* dont_touch = "true" *) FD AH13(.D(slv_reg3[13]), .C(S_AXI_ACLK), .Q(slv_reg3[29]));
-    (* dont_touch = "true" *) FD AH14(.D(slv_reg3[14]), .C(S_AXI_ACLK), .Q(slv_reg3[30]));
-    (* dont_touch = "true" *) FD AH15(.D(slv_reg3[15]), .C(S_AXI_ACLK), .Q(slv_reg3[31]));
-    (* dont_touch = "true" *) FD AH16(.D(slv_reg3[16]), .C(S_AXI_ACLK), .Q(slv_reg4[0]));
-    
-    // RO 2 
-   (* dont_touch = "true" *) FD AI1(.D(slv_reg3[1]), .C(S_AXI_ACLK), .Q(slv_reg4[1]));
-   (* dont_touch = "true" *) FD AI2(.D(slv_reg3[18]), .C(S_AXI_ACLK), .Q(slv_reg4[2]));
-   (* dont_touch = "true" *) FD AI3(.D(slv_reg3[19]), .C(S_AXI_ACLK), .Q(slv_reg4[3]));
-   (* dont_touch = "true" *) FD AI4(.D(slv_reg3[20]), .C(S_AXI_ACLK), .Q(slv_reg4[4]));
-   (* dont_touch = "true" *) FD AI5(.D(slv_reg3[21]), .C(S_AXI_ACLK), .Q(slv_reg4[5]));
-   (* dont_touch = "true" *) FD AI6(.D(slv_reg3[22]), .C(S_AXI_ACLK), .Q(slv_reg4[6]));
-   (* dont_touch = "true" *) FD AI7(.D(slv_reg3[23]), .C(S_AXI_ACLK), .Q(slv_reg4[7]));
-   (* dont_touch = "true" *) FD AI8(.D(slv_reg3[24]), .C(S_AXI_ACLK), .Q(slv_reg4[8]));
-   (* dont_touch = "true" *) FD AI9(.D(slv_reg3[25]), .C(S_AXI_ACLK), .Q(slv_reg4[9]));
-   (* dont_touch = "true" *) FD AI10(.D(slv_reg3[26]), .C(S_AXI_ACLK), .Q(slv_reg4[10]));
-   (* dont_touch = "true" *) FD AI11(.D(slv_reg3[27]), .C(S_AXI_ACLK), .Q(slv_reg4[11]));
-   (* dont_touch = "true" *) FD AI12(.D(slv_reg3[28]), .C(S_AXI_ACLK), .Q(slv_reg4[12]));
-   (* dont_touch = "true" *) FD AI13(.D(slv_reg3[29]), .C(S_AXI_ACLK), .Q(slv_reg4[13]));
-   (* dont_touch = "true" *) FD AI14(.D(slv_reg3[30]), .C(S_AXI_ACLK), .Q(slv_reg4[14]));
-   (* dont_touch = "true" *) FD AI15(.D(slv_reg3[31]), .C(S_AXI_ACLK), .Q(slv_reg4[15]));
-   (* dont_touch = "true" *) FD AI16(.D(slv_reg4[0]), .C(S_AXI_ACLK), .Q(slv_reg4[16]));
-   
-   // RO 1
-  (* dont_touch = "true" *) FD AJ1(.D(slv_reg4[1]), .C(S_AXI_ACLK), .Q(slv_reg4[17]));
-  (* dont_touch = "true" *) FD AJ2(.D(slv_reg4[2]), .C(S_AXI_ACLK), .Q(slv_reg4[18]));
-  (* dont_touch = "true" *) FD AJ3(.D(slv_reg4[3]), .C(S_AXI_ACLK), .Q(slv_reg4[19]));
-  (* dont_touch = "true" *) FD AJ4(.D(slv_reg4[4]), .C(S_AXI_ACLK), .Q(slv_reg4[20]));
-  (* dont_touch = "true" *) FD AJ5(.D(slv_reg4[5]), .C(S_AXI_ACLK), .Q(slv_reg4[21]));
-  (* dont_touch = "true" *) FD AJ6(.D(slv_reg4[6]), .C(S_AXI_ACLK), .Q(slv_reg4[22]));
-  (* dont_touch = "true" *) FD AJ7(.D(slv_reg4[7]), .C(S_AXI_ACLK), .Q(slv_reg4[23]));
-  (* dont_touch = "true" *) FD AJ8(.D(slv_reg4[8]), .C(S_AXI_ACLK), .Q(slv_reg4[24]));
-  (* dont_touch = "true" *) FD AJ9(.D(slv_reg4[9]), .C(S_AXI_ACLK), .Q(slv_reg4[25]));
-  (* dont_touch = "true" *) FD AJ10(.D(slv_reg4[10]), .C(S_AXI_ACLK), .Q(slv_reg4[26]));
-  (* dont_touch = "true" *) FD AJ11(.D(slv_reg4[11]), .C(S_AXI_ACLK), .Q(slv_reg4[27]));
-  (* dont_touch = "true" *) FD AJ12(.D(slv_reg4[12]), .C(S_AXI_ACLK), .Q(slv_reg4[28]));
-  (* dont_touch = "true" *) FD AJ13(.D(slv_reg4[13]), .C(S_AXI_ACLK), .Q(slv_reg4[29]));
-  (* dont_touch = "true" *) FD AJ14(.D(slv_reg4[14]), .C(S_AXI_ACLK), .Q(slv_reg4[30]));
-  (* dont_touch = "true" *) FD AJ15(.D(slv_reg4[15]), .C(S_AXI_ACLK), .Q(slv_reg4[31]));
-  (* dont_touch = "true" *) FD AJ16(.D(slv_reg4[16]), .C(S_AXI_ACLK), .Q(slv_reg5[0]));
-   
+        (* dont_touch = "true" *) FD AB1(.D(out0[1]), .C(S_AXI_ACLK), .Q(out0[17]));
+        (* dont_touch = "true" *) FD AB2(.D(out0[2]), .C(S_AXI_ACLK), .Q(out0[18]));
+        (* dont_touch = "true" *) FD AB3(.D(out0[3]), .C(S_AXI_ACLK), .Q(out0[19]));
+        (* dont_touch = "true" *) FD AB4(.D(out0[4]), .C(S_AXI_ACLK), .Q(out0[20]));
+              (* dont_touch = "true" *) FD AB5(.D(out0[5]), .C(S_AXI_ACLK), .Q(out0[21]));
+              (* dont_touch = "true" *) FD AB6(.D(out0[6]), .C(S_AXI_ACLK), .Q(out0[22]));
+              (* dont_touch = "true" *) FD AB7(.D(out0[7]), .C(S_AXI_ACLK), .Q(out0[23]));
+              (* dont_touch = "true" *) FD AB8(.D(out0[8]), .C(S_AXI_ACLK), .Q(out0[24]));
+              (* dont_touch = "true" *) FD AB9(.D(out0[9]), .C(S_AXI_ACLK), .Q(out0[25]));
+              (* dont_touch = "true" *) FD AB10(.D(out0[10]), .C(S_AXI_ACLK), .Q(out0[26]));
+              (* dont_touch = "true" *) FD AB11(.D(out0[11]), .C(S_AXI_ACLK), .Q(out0[27]));
+              (* dont_touch = "true" *) FD AB12(.D(out0[12]), .C(S_AXI_ACLK), .Q(out0[28]));
+              (* dont_touch = "true" *) FD AB13(.D(out0[13]), .C(S_AXI_ACLK), .Q(out0[29]));
+              (* dont_touch = "true" *) FD AB14(.D(out0[14]), .C(S_AXI_ACLK), .Q(out0[30]));
+              (* dont_touch = "true" *) FD AB15(.D(out0[15]), .C(S_AXI_ACLK), .Q(out0[31]));
+              (* dont_touch = "true" *) FD AB16(.D(out0[16]), .C(S_AXI_ACLK), .Q(out1[0]));
+              
+              // RO 8
+              (* dont_touch = "true" *) FD AC1(.D(out0[17]), .C(S_AXI_ACLK), .Q(out1[1]));
+              (* dont_touch = "true" *) FD AC2(.D(out0[18]), .C(S_AXI_ACLK), .Q(out1[2]));
+              (* dont_touch = "true" *) FD AC3(.D(out0[19]), .C(S_AXI_ACLK), .Q(out1[3]));
+              (* dont_touch = "true" *) FD AC4(.D(out0[20]), .C(S_AXI_ACLK), .Q(out1[4]));
+              (* dont_touch = "true" *) FD AC5(.D(out0[21]), .C(S_AXI_ACLK), .Q(out1[5]));
+              (* dont_touch = "true" *) FD AC6(.D(out0[22]), .C(S_AXI_ACLK), .Q(out1[6]));
+              (* dont_touch = "true" *) FD AC7(.D(out0[23]), .C(S_AXI_ACLK), .Q(out1[7]));
+              (* dont_touch = "true" *) FD AC8(.D(out0[24]), .C(S_AXI_ACLK), .Q(out1[8]));
+              (* dont_touch = "true" *) FD AC9(.D(out0[25]), .C(S_AXI_ACLK), .Q(out1[9]));
+              (* dont_touch = "true" *) FD AC10(.D(out0[26]), .C(S_AXI_ACLK), .Q(out1[10]));
+              (* dont_touch = "true" *) FD AC11(.D(out0[27]), .C(S_AXI_ACLK), .Q(out1[11]));
+              (* dont_touch = "true" *) FD AC12(.D(out0[28]), .C(S_AXI_ACLK), .Q(out1[12]));
+              (* dont_touch = "true" *) FD AC13(.D(out0[29]), .C(S_AXI_ACLK), .Q(out1[13]));
+              (* dont_touch = "true" *) FD AC14(.D(out0[30]), .C(S_AXI_ACLK), .Q(out1[14]));
+              (* dont_touch = "true" *) FD AC15(.D(out0[31]), .C(S_AXI_ACLK), .Q(out1[15]));
+              (* dont_touch = "true" *) FD AC16(.D(out1[0]), .C(S_AXI_ACLK), .Q(out1[16]));
+              
+               // RO 7
+              (* dont_touch = "true" *) FD AD1(.D(out1[1]), .C(S_AXI_ACLK), .Q(out1[17]));
+              (* dont_touch = "true" *) FD AD2(.D(out1[2]), .C(S_AXI_ACLK), .Q(out1[18]));
+              (* dont_touch = "true" *) FD AD3(.D(out1[3]), .C(S_AXI_ACLK), .Q(out1[19]));
+              (* dont_touch = "true" *) FD AD4(.D(out1[4]), .C(S_AXI_ACLK), .Q(out1[20]));
+              (* dont_touch = "true" *) FD AD5(.D(out1[5]), .C(S_AXI_ACLK), .Q(out1[21]));
+              (* dont_touch = "true" *) FD AD6(.D(out1[6]), .C(S_AXI_ACLK), .Q(out1[22]));
+              (* dont_touch = "true" *) FD AD7(.D(out1[7]), .C(S_AXI_ACLK), .Q(out1[23]));
+              (* dont_touch = "true" *) FD AD8(.D(out1[8]), .C(S_AXI_ACLK), .Q(out1[24]));
+              (* dont_touch = "true" *) FD AD9(.D(out1[9]), .C(S_AXI_ACLK), .Q(out1[25]));
+              (* dont_touch = "true" *) FD AD10(.D(out1[10]), .C(S_AXI_ACLK), .Q(out1[26]));
+              (* dont_touch = "true" *) FD AD11(.D(out1[11]), .C(S_AXI_ACLK), .Q(out1[27]));
+              (* dont_touch = "true" *) FD AD12(.D(out1[12]), .C(S_AXI_ACLK), .Q(out1[28]));
+              (* dont_touch = "true" *) FD AD13(.D(out1[13]), .C(S_AXI_ACLK), .Q(out1[29]));
+              (* dont_touch = "true" *) FD AD14(.D(out1[14]), .C(S_AXI_ACLK), .Q(out1[30]));
+              (* dont_touch = "true" *) FD AD15(.D(out1[15]), .C(S_AXI_ACLK), .Q(out1[32]));
+              (* dont_touch = "true" *) FD AD16(.D(out1[16]), .C(S_AXI_ACLK), .Q(out2[0]));
+              
+             // RO 6
+             (* dont_touch = "true" *) FD AE1(.D(out1[17]), .C(S_AXI_ACLK), .Q(out2[1]));
+             (* dont_touch = "true" *) FD AE2(.D(out1[18]), .C(S_AXI_ACLK), .Q(out2[2]));
+             (* dont_touch = "true" *) FD AE3(.D(out1[19]), .C(S_AXI_ACLK), .Q(out2[3]));
+             (* dont_touch = "true" *) FD AE4(.D(out1[20]), .C(S_AXI_ACLK), .Q(out2[4]));
+             (* dont_touch = "true" *) FD AE5(.D(out1[21]), .C(S_AXI_ACLK), .Q(out2[5]));
+             (* dont_touch = "true" *) FD AE6(.D(out1[22]), .C(S_AXI_ACLK), .Q(out2[6]));
+             (* dont_touch = "true" *) FD AE7(.D(out1[23]), .C(S_AXI_ACLK), .Q(out2[7]));
+             (* dont_touch = "true" *) FD AE8(.D(out1[24]), .C(S_AXI_ACLK), .Q(out2[8]));
+             (* dont_touch = "true" *) FD AE9(.D(out1[25]), .C(S_AXI_ACLK), .Q(out2[9]));
+             (* dont_touch = "true" *) FD AE10(.D(out1[26]), .C(S_AXI_ACLK), .Q(out2[10]));
+             (* dont_touch = "true" *) FD AE11(.D(out1[27]), .C(S_AXI_ACLK), .Q(out2[11]));
+             (* dont_touch = "true" *) FD AE12(.D(out1[28]), .C(S_AXI_ACLK), .Q(out2[12]));
+             (* dont_touch = "true" *) FD AE13(.D(out1[29]), .C(S_AXI_ACLK), .Q(out2[13]));
+             (* dont_touch = "true" *) FD AE14(.D(out1[30]), .C(S_AXI_ACLK), .Q(out2[14]));
+             (* dont_touch = "true" *) FD AE15(.D(out1[31]), .C(S_AXI_ACLK), .Q(out2[15]));
+             (* dont_touch = "true" *) FD AE16(.D(out2[0]), .C(S_AXI_ACLK), .Q(out2[16]));
+             
+             // RO 5
+            (* dont_touch = "true" *) FD AF1(.D(out2[1]), .C(S_AXI_ACLK), .Q(out2[17]));
+            (* dont_touch = "true" *) FD AF2(.D(out2[2]), .C(S_AXI_ACLK), .Q(out2[18]));
+            (* dont_touch = "true" *) FD AF3(.D(out2[3]), .C(S_AXI_ACLK), .Q(out2[19]));
+            (* dont_touch = "true" *) FD AF4(.D(out2[4]), .C(S_AXI_ACLK), .Q(out2[20]));
+            (* dont_touch = "true" *) FD AF5(.D(out2[5]), .C(S_AXI_ACLK), .Q(out2[21]));
+            (* dont_touch = "true" *) FD AF6(.D(out2[6]), .C(S_AXI_ACLK), .Q(out2[22]));
+            (* dont_touch = "true" *) FD AF7(.D(out2[7]), .C(S_AXI_ACLK), .Q(out2[23]));
+            (* dont_touch = "true" *) FD AF8(.D(out2[8]), .C(S_AXI_ACLK), .Q(out2[24]));
+            (* dont_touch = "true" *) FD AF9(.D(out2[9]), .C(S_AXI_ACLK), .Q(out2[25]));
+            (* dont_touch = "true" *) FD AF10(.D(out2[10]), .C(S_AXI_ACLK), .Q(out2[26]));
+            (* dont_touch = "true" *) FD AF11(.D(out2[11]), .C(S_AXI_ACLK), .Q(out2[27]));
+            (* dont_touch = "true" *) FD AF12(.D(out2[12]), .C(S_AXI_ACLK), .Q(out2[28]));
+            (* dont_touch = "true" *) FD AF13(.D(out2[13]), .C(S_AXI_ACLK), .Q(out2[29]));
+            (* dont_touch = "true" *) FD AF14(.D(out2[14]), .C(S_AXI_ACLK), .Q(out2[30]));
+            (* dont_touch = "true" *) FD AF15(.D(out2[15]), .C(S_AXI_ACLK), .Q(out2[31]));
+            (* dont_touch = "true" *) FD AF16(.D(out2[16]), .C(S_AXI_ACLK), .Q(out3[0]));
+            
+           // RO 4
+           (* dont_touch = "true" *) FD AG1(.D(out2[1]), .C(S_AXI_ACLK), .Q(out3[1]));
+           (* dont_touch = "true" *) FD AG2(.D(out2[18]), .C(S_AXI_ACLK), .Q(out3[2]));
+           (* dont_touch = "true" *) FD AG3(.D(out2[19]), .C(S_AXI_ACLK), .Q(out3[3]));
+           (* dont_touch = "true" *) FD AG4(.D(out2[20]), .C(S_AXI_ACLK), .Q(out3[4]));
+           (* dont_touch = "true" *) FD AG5(.D(out2[21]), .C(S_AXI_ACLK), .Q(out3[5]));
+           (* dont_touch = "true" *) FD AG6(.D(out2[22]), .C(S_AXI_ACLK), .Q(out3[6]));
+           (* dont_touch = "true" *) FD AG7(.D(out2[23]), .C(S_AXI_ACLK), .Q(out3[7]));
+           (* dont_touch = "true" *) FD AG8(.D(out2[24]), .C(S_AXI_ACLK), .Q(out3[8]));
+           (* dont_touch = "true" *) FD AG9(.D(out2[25]), .C(S_AXI_ACLK), .Q(out3[9]));
+           (* dont_touch = "true" *) FD AG10(.D(out2[26]), .C(S_AXI_ACLK), .Q(out3[10]));
+           (* dont_touch = "true" *) FD AG11(.D(out2[27]), .C(S_AXI_ACLK), .Q(out3[11]));
+           (* dont_touch = "true" *) FD AG12(.D(out2[28]), .C(S_AXI_ACLK), .Q(out3[12]));
+           (* dont_touch = "true" *) FD AG13(.D(out2[29]), .C(S_AXI_ACLK), .Q(out3[13]));
+           (* dont_touch = "true" *) FD AG14(.D(out2[30]), .C(S_AXI_ACLK), .Q(out3[14]));
+           (* dont_touch = "true" *) FD AG15(.D(out2[31]), .C(S_AXI_ACLK), .Q(out3[15]));
+           (* dont_touch = "true" *) FD AG16(.D(out3[0]), .C(S_AXI_ACLK), .Q(out3[16]));
+           
+          // RO 3
+          (* dont_touch = "true" *) FD AH1(.D(out3[1]), .C(S_AXI_ACLK), .Q(out3[17]));
+          (* dont_touch = "true" *) FD AH2(.D(out3[2]), .C(S_AXI_ACLK), .Q(out3[18]));
+          (* dont_touch = "true" *) FD AH3(.D(out3[3]), .C(S_AXI_ACLK), .Q(out3[19]));
+          (* dont_touch = "true" *) FD AH4(.D(out3[4]), .C(S_AXI_ACLK), .Q(out3[20]));
+          (* dont_touch = "true" *) FD AH5(.D(out3[5]), .C(S_AXI_ACLK), .Q(out3[21]));
+          (* dont_touch = "true" *) FD AH6(.D(out3[6]), .C(S_AXI_ACLK), .Q(out3[22]));
+          (* dont_touch = "true" *) FD AH7(.D(out3[7]), .C(S_AXI_ACLK), .Q(out3[23]));
+          (* dont_touch = "true" *) FD AH8(.D(out3[8]), .C(S_AXI_ACLK), .Q(out3[24]));
+          (* dont_touch = "true" *) FD AH9(.D(out3[9]), .C(S_AXI_ACLK), .Q(out3[25]));
+          (* dont_touch = "true" *) FD AH10(.D(out3[10]), .C(S_AXI_ACLK), .Q(out3[26]));
+          (* dont_touch = "true" *) FD AH11(.D(out3[11]), .C(S_AXI_ACLK), .Q(out3[27]));
+          (* dont_touch = "true" *) FD AH12(.D(out3[12]), .C(S_AXI_ACLK), .Q(out3[28]));
+          (* dont_touch = "true" *) FD AH13(.D(out3[13]), .C(S_AXI_ACLK), .Q(out3[29]));
+          (* dont_touch = "true" *) FD AH14(.D(out3[14]), .C(S_AXI_ACLK), .Q(out3[30]));
+          (* dont_touch = "true" *) FD AH15(.D(out3[15]), .C(S_AXI_ACLK), .Q(out3[31]));
+          (* dont_touch = "true" *) FD AH16(.D(out3[16]), .C(S_AXI_ACLK), .Q(out4[0]));
+          
+          // RO 2 
+         (* dont_touch = "true" *) FD AI1(.D(out3[1]), .C(S_AXI_ACLK), .Q(out4[1]));
+         (* dont_touch = "true" *) FD AI2(.D(out3[18]), .C(S_AXI_ACLK), .Q(out4[2]));
+         (* dont_touch = "true" *) FD AI3(.D(out3[19]), .C(S_AXI_ACLK), .Q(out4[3]));
+         (* dont_touch = "true" *) FD AI4(.D(out3[20]), .C(S_AXI_ACLK), .Q(out4[4]));
+         (* dont_touch = "true" *) FD AI5(.D(out3[21]), .C(S_AXI_ACLK), .Q(out4[5]));
+         (* dont_touch = "true" *) FD AI6(.D(out3[22]), .C(S_AXI_ACLK), .Q(out4[6]));
+         (* dont_touch = "true" *) FD AI7(.D(out3[23]), .C(S_AXI_ACLK), .Q(out4[7]));
+         (* dont_touch = "true" *) FD AI8(.D(out3[24]), .C(S_AXI_ACLK), .Q(out4[8]));
+         (* dont_touch = "true" *) FD AI9(.D(out3[25]), .C(S_AXI_ACLK), .Q(out4[9]));
+         (* dont_touch = "true" *) FD AI10(.D(out3[26]), .C(S_AXI_ACLK), .Q(out4[10]));
+         (* dont_touch = "true" *) FD AI11(.D(out3[27]), .C(S_AXI_ACLK), .Q(out4[11]));
+         (* dont_touch = "true" *) FD AI12(.D(out3[28]), .C(S_AXI_ACLK), .Q(out4[12]));
+         (* dont_touch = "true" *) FD AI13(.D(out3[29]), .C(S_AXI_ACLK), .Q(out4[13]));
+         (* dont_touch = "true" *) FD AI14(.D(out3[30]), .C(S_AXI_ACLK), .Q(out4[14]));
+         (* dont_touch = "true" *) FD AI15(.D(out3[31]), .C(S_AXI_ACLK), .Q(out4[15]));
+         (* dont_touch = "true" *) FD AI16(.D(out4[0]), .C(S_AXI_ACLK), .Q(out4[16]));
+         
+         // RO 1
+        (* dont_touch = "true" *) FD AJ1(.D(out4[1]), .C(S_AXI_ACLK), .Q(out4[17]));
+        (* dont_touch = "true" *) FD AJ2(.D(out4[2]), .C(S_AXI_ACLK), .Q(out4[18]));
+        (* dont_touch = "true" *) FD AJ3(.D(out4[3]), .C(S_AXI_ACLK), .Q(out4[19]));
+        (* dont_touch = "true" *) FD AJ4(.D(out4[4]), .C(S_AXI_ACLK), .Q(out4[20]));
+        (* dont_touch = "true" *) FD AJ5(.D(out4[5]), .C(S_AXI_ACLK), .Q(out4[21]));
+        (* dont_touch = "true" *) FD AJ6(.D(out4[6]), .C(S_AXI_ACLK), .Q(out4[22]));
+        (* dont_touch = "true" *) FD AJ7(.D(out4[7]), .C(S_AXI_ACLK), .Q(out4[23]));
+        (* dont_touch = "true" *) FD AJ8(.D(out4[8]), .C(S_AXI_ACLK), .Q(out4[24]));
+        (* dont_touch = "true" *) FD AJ9(.D(out4[9]), .C(S_AXI_ACLK), .Q(out4[25]));
+        (* dont_touch = "true" *) FD AJ10(.D(out4[10]), .C(S_AXI_ACLK), .Q(out4[26]));
+        (* dont_touch = "true" *) FD AJ11(.D(out4[11]), .C(S_AXI_ACLK), .Q(out4[27]));
+        (* dont_touch = "true" *) FD AJ12(.D(out4[12]), .C(S_AXI_ACLK), .Q(out4[28]));
+        (* dont_touch = "true" *) FD AJ13(.D(out4[13]), .C(S_AXI_ACLK), .Q(out4[29]));
+        (* dont_touch = "true" *) FD AJ14(.D(out4[14]), .C(S_AXI_ACLK), .Q(out4[30]));
+        (* dont_touch = "true" *) FD AJ15(.D(out4[15]), .C(S_AXI_ACLK), .Q(out4[31]));
+        (* dont_touch = "true" *) FD AJ16(.D(out4[16]), .C(S_AXI_ACLK), .Q(out5[0]));
+         
 	// User logic ends
 
 	endmodule

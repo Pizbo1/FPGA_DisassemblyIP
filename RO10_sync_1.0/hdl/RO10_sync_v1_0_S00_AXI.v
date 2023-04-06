@@ -114,6 +114,11 @@
 	integer	 byte_index;
 	reg	 aw_en;
 
+    wire [32:0] out0;
+    wire [32:0] out1;
+    wire [32:0] out2;
+    wire [32:0] out3;
+
 	// I/O Connections assignments
 
 	assign S_AXI_AWREADY	= axi_awready;
@@ -370,10 +375,10 @@
 	begin
 	      // Address decoding for reading registers
 	      case ( axi_araddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] )
-	        2'h0   : reg_data_out <= slv_reg0;
-	        2'h1   : reg_data_out <= slv_reg1;
-	        2'h2   : reg_data_out <= slv_reg2;
-	        2'h3   : reg_data_out <= slv_reg3;
+	        2'h0   : reg_data_out <= out0;
+	        2'h1   : reg_data_out <= out1;
+	        2'h2   : reg_data_out <= out2;
+	        2'h3   : reg_data_out <= out3;
 	        default : reg_data_out <= 0;
 	      endcase
 	end
@@ -398,16 +403,16 @@
 	end    
 
 	// Add user logic here
-    (* dont_touch = "true" *) FD FF0(.D(slv_reg0[0]), .C(S_AXI_ACLK), .Q(slv_reg0[1]));
-    (* dont_touch = "true" *) FD FF1(.D(slv_reg0[1]), .C(S_AXI_ACLK), .Q(slv_reg0[2]));
-    (* dont_touch = "true" *) FD FF2(.D(slv_reg0[2]), .C(S_AXI_ACLK), .Q(slv_reg0[3]));
-    (* dont_touch = "true" *) FD FF3(.D(slv_reg0[3]), .C(S_AXI_ACLK), .Q(slv_reg0[4]));
-    (* dont_touch = "true" *) FD FF4(.D(slv_reg0[4]), .C(S_AXI_ACLK), .Q(slv_reg0[5]));
-    (* dont_touch = "true" *) FD FF5(.D(slv_reg0[5]), .C(S_AXI_ACLK), .Q(slv_reg0[6]));
-    (* dont_touch = "true" *) FD FF6(.D(slv_reg0[6]), .C(S_AXI_ACLK), .Q(slv_reg0[7]));
-    (* dont_touch = "true" *) FD FF7(.D(slv_reg0[7]), .C(S_AXI_ACLK), .Q(slv_reg0[8]));
-    (* dont_touch = "true" *) FD FF8(.D(slv_reg0[8]), .C(S_AXI_ACLK), .Q(slv_reg0[9]));
-    (* dont_touch = "true" *) FD FF9(.D(slv_reg0[9]), .C(S_AXI_ACLK), .Q(slv_reg0[10]));
+    (* dont_touch = "true" *) FD FF0(.D(slv_reg0[0]), .C(S_AXI_ACLK), .Q(out0[1]));
+    (* dont_touch = "true" *) FD FF1(.D(out0[1]), .C(S_AXI_ACLK), .Q(out0[2]));
+    (* dont_touch = "true" *) FD FF2(.D(out0[2]), .C(S_AXI_ACLK), .Q(out0[3]));
+    (* dont_touch = "true" *) FD FF3(.D(out0[3]), .C(S_AXI_ACLK), .Q(out0[4]));
+    (* dont_touch = "true" *) FD FF4(.D(out0[4]), .C(S_AXI_ACLK), .Q(out0[5]));
+    (* dont_touch = "true" *) FD FF5(.D(out0[5]), .C(S_AXI_ACLK), .Q(out0[6]));
+    (* dont_touch = "true" *) FD FF6(.D(out0[6]), .C(S_AXI_ACLK), .Q(out0[7]));
+    (* dont_touch = "true" *) FD FF7(.D(out0[7]), .C(S_AXI_ACLK), .Q(out0[8]));
+    (* dont_touch = "true" *) FD FF8(.D(out0[8]), .C(S_AXI_ACLK), .Q(out0[9]));
+    (* dont_touch = "true" *) FD FF9(.D(out0[9]), .C(S_AXI_ACLK), .Q(out0[10]));
 	// User logic ends
 
 	endmodule
