@@ -15,7 +15,7 @@
 	)
 	(
 		// Users to add ports here
-
+        input wire gated_clock,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -48,6 +48,7 @@
 		.C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
 		.C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
 	) RO_10_v1_0_S00_AXI_inst (
+	    .gated_clock(gated_clock),
 		.S_AXI_ACLK(s00_axi_aclk),
 		.S_AXI_ARESETN(s00_axi_aresetn),
 		.S_AXI_AWADDR(s00_axi_awaddr),
